@@ -1,4 +1,4 @@
-// Only SQL lives here. Nothing else.
+// Only For SQL
 
 const db = require("../config/db");
 

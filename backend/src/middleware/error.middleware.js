@@ -1,4 +1,4 @@
-// One place that turns errors into clean JSON responses.
+// For Express Only
 
 const AppError = require("../utils/AppError");
 

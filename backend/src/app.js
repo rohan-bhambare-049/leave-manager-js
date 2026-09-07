@@ -1,6 +1,4 @@
-// The Express app. I keep it separate from server.js so that the tests
-// can import the app without starting a real server, and so that Vercel
-// can use the same app as a serverless function.
+// For Express Only
 
 require("dotenv").config();
 const express = require("express");

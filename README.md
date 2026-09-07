@@ -1,12 +1,10 @@
 # Online Free Leave Manager
 
-A small Employee Leave Management app that I built for the REST API assignment.
+A small Employee Leave Management app that I built for demo purpose.
 
 The backend is a REST API made with **Node.js + Express** and it stores the data in **PostgreSQL**.
 On my laptop it talks to a local PostgreSQL, and when I deploy it on **Vercel** the same code talks to a
 **Neon** PostgreSQL database. Both are PostgreSQL, so I only change the `DATABASE_URL` value in the env file.
-
-The frontend is a very simple **React (Vite)** app that uses this API.
 
 ---
 
@@ -53,18 +51,14 @@ DATABASE_URL=postgresql://postgres:postgres@localhost:5432/leave_manager
 DATABASE_SSL=false
 ```
 
-### Neon (used for the Vercel deployment)
-
-1. Create a free project on [neon.tech](https://neon.tech).
-2. Copy the connection string from the Neon dashboard.
-3. Put it in the env file (or in the Vercel project settings):
+### Neon used for the Vercel deployment
 
 ```
 DATABASE_URL=postgresql://<user>:<password>@ep-xxxx.aws.neon.tech/neondb?sslmode=require
 DATABASE_SSL=true
 ```
 
-Nothing else changes, because Neon is PostgreSQL.
+Nothing more changes as Neon is PostgreSQL.
 
 ---
 
@@ -209,7 +203,7 @@ Sample summary response:
 ```json
 {
   "employee_id": 1,
-  "employee_name": "Rohan Roy",
+  "employee_name": "Rohan",
   "total_days": 7,
   "by_type": {
     "casual": { "total_requests": 2, "total_days": 5 },
@@ -217,34 +211,3 @@ Sample summary response:
   }
 }
 ```
-
-A Postman collection is also included in `postman_collection.json`, just import it in Postman.
-
----
-
-## Deploying on Vercel with Neon
-
-**Backend**
-
-1. Push this repo to GitHub.
-2. In Vercel, import the repo and set the root directory to `backend`.
-3. Add the environment variables: `DATABASE_URL` (the Neon string), `DATABASE_SSL=true`,
-   `JWT_SECRET`, `JWT_EXPIRES_IN`, `CLIENT_ORIGIN` (the frontend url).
-4. Deploy. The `vercel.json` file sends every request to `api/index.js`.
-5. Run the tables once on Neon: either run `npm run migrate` locally with the Neon `DATABASE_URL`,
-   or paste `backend/db/schema.sql` in the Neon SQL editor.
-
-**Frontend**
-
-1. Import the same repo again in Vercel and set the root directory to `frontend`.
-2. Add `VITE_API_URL` and point it to the deployed backend url.
-3. Deploy.
-
----
-
-## Notes
-
-* Passwords are hashed with bcryptjs, and the hash never leaves the server.
-* A password is optional while creating an employee. It is only needed for people who will login.
-* The summary counts only the **approved** leaves, because those are the leaves actually taken.
-* Nothing is hardcoded, every secret comes from the `.env` file.

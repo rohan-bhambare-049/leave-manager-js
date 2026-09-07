@@ -1,4 +1,4 @@
-// Business rules for leave requests.
+// Business rules for leave requests
 
 const leaveModel = require("../models/leave.model");
 const employeeModel = require("../models/employee.model");

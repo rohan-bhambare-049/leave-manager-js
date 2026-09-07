@@ -1,4 +1,4 @@
-// A tiny error class so that services can say which HTTP status they want.
+// Error handeling
 
 class AppError extends Error {
   constructor(status, message, details) {

@@ -1,4 +1,3 @@
-// Vercel looks inside the api folder and runs this file as a serverless function.
-// It simply exports the same Express app.
+// For Vercel Only
 
 module.exports = require("../src/app");

@@ -1,5 +1,4 @@
-// Very simple validation helpers. I kept them plain instead of using a
-// validation library, so that it is easy to read and easy to change.
+// Validation helpers
 
 const LEAVE_TYPES = ["casual", "sick", "earned", "unpaid"];
 const LEAVE_STATUSES = ["pending", "approved", "rejected"];

@@ -1,4 +1,4 @@
-// Business rules for employees.
+// Business rules for employees
 
 const bcrypt = require("bcryptjs");
 const employeeModel = require("../models/employee.model");

@@ -45,7 +45,7 @@ export default function AddEmployee({ onAdded }) {
       <form onSubmit={handleSubmit}>
         <div className="field">
           <label>Full name</label>
-          <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Rohan Roy" />
+          <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Rohan" />
         </div>
 
         <div className="field">

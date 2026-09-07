@@ -1,4 +1,4 @@
-// Starts the server on my laptop.
+// Server Starting
 
 require("dotenv").config();
 const app = require("./app");
