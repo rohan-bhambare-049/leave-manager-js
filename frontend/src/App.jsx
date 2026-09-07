@@ -81,7 +81,7 @@ export default function App() {
       {tab === "summary" ? <LeaveSummary employees={employees} /> : null}
       {tab === "hr" ? <HrLogin hr={hr} onLogin={handleLogin} onLogout={handleLogout} /> : null}
 
-      <p className="footer">Made by a student for the Leave Management assignment</p>
+      <p className="footer">Made only for Demo Purpose</p>
     </div>
   );
 }
