@@ -1,0 +1,105 @@
+{
+  "info": {
+    "name": "Online Free Leave Manager",
+    "description": "Sample requests for the Employee Leave Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:4000" },
+    { "key": "token", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Health check",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/health", "host": ["{{baseUrl}}"], "path": ["health"] }
+      }
+    },
+    {
+      "name": "Create employee",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Rohan Roy\",\n  \"department\": \"Engineering\",\n  \"email\": \"rohan@company.com\",\n  \"role\": \"employee\",\n  \"password\": \"emp12345\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/employees", "host": ["{{baseUrl}}"], "path": ["employees"] }
+      }
+    },
+    {
+      "name": "List employees",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/employees", "host": ["{{baseUrl}}"], "path": ["employees"] }
+      }
+    },
+    {
+      "name": "Login as HR",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"hr@company.com\",\n  \"password\": \"hr12345\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth", "login"] }
+      }
+    },
+    {
+      "name": "Submit leave request",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"employee_id\": 1,\n  \"leave_type\": \"casual\",\n  \"from_date\": \"2026-09-10\",\n  \"to_date\": \"2026-09-12\",\n  \"reason\": \"Family function at home\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/leaves", "host": ["{{baseUrl}}"], "path": ["leaves"] }
+      }
+    },
+    {
+      "name": "List leaves with filters",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/leaves?employee_id=1&status=pending",
+          "host": ["{{baseUrl}}"],
+          "path": ["leaves"],
+          "query": [
+            { "key": "employee_id", "value": "1" },
+            { "key": "status", "value": "pending" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Approve or reject leave (HR only)",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": { "mode": "raw", "raw": "{\n  \"status\": \"approved\"\n}" },
+        "url": {
+          "raw": "{{baseUrl}}/leaves/1/status",
+          "host": ["{{baseUrl}}"],
+          "path": ["leaves", "1", "status"]
+        }
+      }
+    },
+    {
+      "name": "Leave summary of one employee",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/leaves/summary/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["leaves", "summary", "1"]
+        }
+      }
+    }
+  ]
+}
