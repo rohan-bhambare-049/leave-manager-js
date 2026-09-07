@@ -30,7 +30,6 @@ online-free-leave-manager/
 │   └── tests/                      # jest + supertest tests
 ├── frontend/
 │   └── src/                        # react app
-└── postman_collection.json
 ```
 
 ---
